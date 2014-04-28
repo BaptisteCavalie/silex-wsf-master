@@ -28,12 +28,16 @@ Class HomeController extends Controller
 
         return $this->app['twig']->render('article.twig', $this->data);
     }
-    public function postComment($idArticle)
+    public function postComment($idArticle = null)
     {
-        if($this->data['user'] == $this->isLogged()){
+        $this->data['user'] = $this->isLogged();
 
+        if ( $this->isLogged() ){
+            // requete d'ajout de commentaire
+            if($idArticle){
+                $comment = new Comment($this->app);
+                $comment = $comment->saveComment($idArticle, $this->app['request']->get('comment') );
+            }
         }  
-
-        $this->getArticle($idArticle);    
     }
 }
