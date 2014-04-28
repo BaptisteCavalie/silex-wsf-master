@@ -3,6 +3,7 @@
     <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}/css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <title>Blog | {% block title%}{% endblock %}</title>
     </head>
     <body>
@@ -22,7 +23,7 @@
                     {% endif %}
                 </ul>
             </nav>
-            <div>
+            <div id="login">
             {% if user %}
                     <p>Bienvenue, {{ user.name }}</p>
                     <a href="{{ app.url_generator.generate('logout') }}">Logout</a>
